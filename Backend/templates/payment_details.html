@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>payment</title>
+</head>
+<body>
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">PAYMENT DETAILS</h4>
+                    <p class="card-description"><code></code>
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Car Name</th>
+                            <th>Car Id</th>
+                            <th>Amount(paid)</th>
+                            <th>Order Id</th>
+                              <th>Razorpay Payment Id</th>
+                            <th>Payment Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in data %}
+                          <tr>
+                            <td>{{i.name}}</td>
+                            <td>{{i.car_name}}</td>
+                            <td>{{i.car_id}}</td>
+                            <td>{{i.amount}}</td>
+                            <td>{{i.order_id}}</td>
+                            <td>{{i.razorpay_payment_id}}</td>
+                            <td>{{i.paid}}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}

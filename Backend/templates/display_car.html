@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">CAR DETAILS</h4>
+                    <p class="card-description"><code></code>
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Description</th>
+                            <th>Images</th>
+                            <th>Price</th>
+                              <th>Mileage</th>
+                            <th>Engine</th>
+                            <th>Transmission</th>
+                            <th>Fuel Type</th>
+                            <th>Seats</th>
+                              <th>Color</th>
+                            <th>Doors</th>
+                            <th>Year</th>
+                              <th>Body Style</th>
+                              <th>Power</th>
+                              <th>Type</th>
+                              <th>Features</th>
+                            <th>Options</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in data %}
+                          <tr>
+                            <td>{{i.Name}}</td>
+                            <td>{{i.Model}}</td>
+                            <td>{{i.Description}}</td>
+                            <td>
+                              <img src="{{i.Image_1.url}}" alt="">
+                                <img src="{{i.Image_2.url}}" alt="">
+                                <img src="{{i.Image_3.url}}" alt="">
+                                <img src="{{i.Image_4.url}}" alt="">
+                            </td>
+                            <td>{{i.Price}}</td>
+                            <td>{{i.Mileage}}</td>
+                            <td>{{i.Engine}}</td>
+                            <td>{{i.Transmission}}</td>
+                            <td>{{i.Fuel_Type}}</td>
+                            <td>{{i.Seats}}</td>
+                            <td>{{i.Color}}</td>
+                            <td>{{i.Doors}}</td>
+                            <td>{{i.Year}}</td>
+                              <td>{{i.Body_Style}}</td>
+                              <td>{{i.Power}}</td>
+                              <td>{{i.Type}}</td>
+                              <td>{{i.Features}}</td>
+                            <td>
+                              <a href="{% url 'edit_car' c_id=i.id %}"><button type="button" class="btn btn-outline-primary btn-md">Edit</button></a>
+                              <a href="{% url 'delete_car' c_id=i.id %}"><button type="button" class="btn btn-outline-danger btn-md">Delete</button></a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

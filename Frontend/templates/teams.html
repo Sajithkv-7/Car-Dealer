@@ -1,0 +1,163 @@
+
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+		<title>Team</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+
+						<!-- Logo -->
+							<a href="index.html" class="logo">
+								<span class="fa fa-car"></span> <span class="title">Car Dealer Website</span>
+							</a>
+
+						<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</header>
+
+			<!-- Menu -->
+				<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="{% url 'home_page' %}">Home</a></li>
+
+							<li><a href="{% url 'all_cars' %}">Cars</a></li>
+
+							<li>
+								<a href="#" class="dropdown-toggle">About</a>
+
+								<ul>
+									<li><a href="{% url 'about_page' %}" class="active">About Us</a></li>
+									<li><a href="{% url 'teams' %}">Team</a></li>
+									<li><a href="{% url 'blog' %}">Blog</a></li>
+									<li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+									<li><a href="{% url 'faq' %}">FAQ</a></li>
+								</ul>
+							</li>
+							<li><a href="{% url 'contact' %}">Contact Us</a></li>
+							{% if request.user.is_authenticated %}
+							<li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link">{{request.user}}/Logout</a></li>
+                			{% else %}
+                			<li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register/Login</a></li>
+                			{% endif %}
+							<li><a href="{% url 'enquiry_page' %}">Inquiries</a></li>
+							<li><a href="{% url 'chatbot' %}">Chat Support</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Team</h1>
+
+							<div class="image main">
+								<img src="{% static 'images/banner-image-2-1920x500.jpg' %}" class="img-fluid" alt="" />
+							</div>
+
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-3 text-center">
+										<img src="{% static 'images/author-image-1-646x680.jpg' %}" class="img-fluid" alt="" />
+
+										<h2 class="m-n">John Noe</h2>
+
+										<p>
+											CEO <br>
+
+											<a href="#"><i class="fa fa-twitter"></i></a> &nbsp;
+											<a href="#"><i class="fa fa-linkedin"></i></a>
+										</p>
+									</div>
+
+									<div class="col-sm-3 text-center">
+										<img src="{% static 'images/author-image-2-646x680.jpg' %}" class="img-fluid" alt="" />
+
+										<h2 class="m-n">Jane Doe</h2>
+
+										<p>
+											Customer Support <br>
+
+											<a href="#"><i class="fa fa-twitter"></i></a> &nbsp;
+											<a href="#"><i class="fa fa-linkedin"></i></a>
+										</p>
+									</div>
+
+									<div class="col-sm-3 text-center">
+										<img src="{% static 'images/author-image-3-646x680.jpg' %}" class="img-fluid" alt="" />
+
+										<h2 class="m-n">Merry Smith</h2>
+
+										<p>
+											Social Media <br>
+
+											<a href="#"><i class="fa fa-twitter"></i></a> &nbsp;
+											<a href="#"><i class="fa fa-linkedin"></i></a>
+										</p>
+									</div>
+
+									<div class="col-sm-3 text-center">
+										<img src="{% static 'images/author-image-4-646x680.jpg' %}" class="img-fluid" alt="" />
+
+										<h2 class="m-n">Jack Dawn</h2>
+
+										<p>
+											Social Media <br>
+
+											<a href="#"><i class="fa fa-twitter"></i></a> &nbsp;
+											<a href="#"><i class="fa fa-linkedin"></i></a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<ul class="icons">
+									<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+
+								&nbsp;
+							</section>
+
+							<ul class="copyright">
+								<li>Copyright © 2020 Car Dealer </li>
+
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+	</body>
+</html>

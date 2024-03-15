@@ -1,0 +1,45 @@
+<!doctype html>
+{% extends 'all_cars.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% if searched %}
+    <h1>You Searched for {{ searched }}</h1>
+<br>
+
+<!--        {{car}} - {{car.Model}} - {{car.Engine}} - {{car.Mileage}}-->
+				<section class="tiles">
+					{% for car in Cars %}
+        			<article class="style1">
+						<span class="image">
+							<img src="{{car.Image_2.url}}" alt="" />
+						</span>
+						<a href="{% url 'car_details' d_id=car.id %}">
+							<h2>{{car.Name}}</h2>
+							<h2>{{car.Model}}</h2>
+							<p><strong>{{car.Price}}</strong></p>
+
+							<p>
+								<i class="fa fa-dashboard"></i>{{car.Mileage}}
+								<i class="fa fa-cube"></i>{{car.Engine}}
+								<i class="fa fa-cog"></i>{{car.Transmission}}
+							</p>
+						</a>
+					</article>
+					{% endfor %}
+				</section>
+
+{% else %}
+    <h1>invalid</h1>
+{% endif %}
+
+</body>
+</html>
+{% endblock %}

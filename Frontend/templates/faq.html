@@ -1,0 +1,133 @@
+
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+		<title>FAQ</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+
+						<!-- Logo -->
+							<a href="{% url 'home_page' %}" class="logo">
+								<span class="fa fa-car"></span> <span class="title">Car Dealer</span>
+							</a>
+
+						<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</header>
+
+			<!-- Menu -->
+				<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="{% url 'home_page' %}">Home</a></li>
+
+							<li><a href="{% url 'all_cars' %}">Cars</a></li>
+
+							<li>
+								<a href="#" class="dropdown-toggle">About</a>
+
+								<ul>
+									<li><a href="{% url 'about_page' %}" class="active">About Us</a></li>
+									<li><a href="{% url 'teams' %}">Team</a></li>
+									<li><a href="{% url 'blog' %}">Blog</a></li>
+									<li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+									<li><a href="{% url 'faq' %}">FAQ</a></li>
+								</ul>
+							</li>
+							<li><a href="{% url 'contact' %}">Contact Us</a></li>
+							{% if request.user.is_authenticated %}
+							<li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link">{{request.user}}/Logout</a></li>
+                			{% else %}
+                			<li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register/Login</a></li>
+                			{% endif %}
+							<li><a href="{% url 'enquiry_page' %}">Inquiries</a></li>
+							<li><a href="{% url 'chatbot' %}">Chat Support</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>FAQ</h1>
+
+							<div class="image main">
+								<img src="{% static 'images/banner-image-4-1920x500.jpg' %}" class="img-fluid" alt="" />
+							</div>
+
+							<h2 class="m-n"><i class="fa fa-question-circle"></i>Does It Matter What Type of Gas I Use?</h2>
+							<p>Within the gas industry, there are different types of brands, and some of these are considered to be more top tier,
+								higher quality than others. These would include Shell, ExxonMobil, BP, Texaco, and more. They are considered of higher quality because they add more detergent additives to their gasoline, which help prevent carbon deposits from forming and settling in your engine, giving you better performance.
+								At these top tier stations, you’ll also find different types of gas. </p>
+
+							<h2 class="m-n"><i class="fa fa-question-circle"></i>How Often Should I Replace My Windshield Wiper Blades?</h2>
+							<p>Wiper blades are made of rubber and will slowly degrade over time as they scrape against your glass.
+								They are responsible for clearing it of not only rainwater, but also bugs, dust, and more. Typically you should replace your wiper blades every 6-12 months,
+								but watch for signs that they need to be replaced sooner including:</p>
+
+							<h2 class="m-n"><i class="fa fa-question-circle"></i> Is the dealership open, and if so, what safety precautions are being taken? </h2>
+							<p>The most helpful thing a dealership can do is to provide accurate information to its customers and communicate frequently.
+								This can be done in a few key places with highly visible website messaging, such as on slides, banners, and landing pages.
+								Also include it in social media and email.</p>
+
+							<h2 class="m-n"><i class="fa fa-question-circle"></i>What’s the best way to reach a dealer if someone doesn’t want to visit a dealership?</h2>
+							<p></p>
+
+							<h2 class="m-n"><i class="fa fa-question-circle"></i> Lorem ipsum dolor sit amet ?</h2>
+							<p> It can be difficult to replace in-person visits, but virtual interactions are the next-best thing to keeping many dealerships operating closer to normal.
+								Connect virtually and make shoppers feel as though you’re in the room with them.</p>
+
+							<h2 class="m-n"><i class="fa fa-question-circle"></i>Can I get my car serviced or repaired?</h2>
+							<p>Let customers know what’s done to ensure safety during service appointments. Outline it simply on the website,
+								whether it’s offering no-contact car services, having a delivery and pickup option, videos showing the disinfection process or listing variable service hours to reduce the number of technicians in the dealership at a given time.</p>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<ul class="icons">
+									<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+
+								&nbsp;
+							</section>
+
+							<ul class="copyright">
+								<li>Copyright © 2020 Car Dealer </li>
+
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+	</body>
+</html>

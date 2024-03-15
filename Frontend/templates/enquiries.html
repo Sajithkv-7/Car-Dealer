@@ -1,0 +1,159 @@
+
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+		<title>Car Dealer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+
+						<!-- Logo -->
+							<a href="{% url 'home_page' %}" class="logo">
+								<span class="fa fa-car"></span> <span class="title">Car Dealer</span>
+							</a>
+
+						<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</header>
+
+			<!-- Menu -->
+				<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="{% url 'home_page' %}">Home</a></li>
+
+							<li><a href="{% url 'all_cars' %}">Cars</a></li>
+
+							<li>
+								<a href="#" class="dropdown-toggle">About</a>
+
+								<ul>
+									<li><a href="{% url 'about_page' %}">About Us</a></li>
+									<li><a href="{% url 'teams' %}">Team</a></li>
+									<li><a href="{% url 'blog' %}">Blog</a></li>
+									<li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+									<li><a href="{% url 'faq' %}">FAQ</a></li>
+								</ul>
+							</li>
+							<li><a href="{% url 'contact' %}">Contact Us</a></li>
+							{% if request.user.is_authenticated %}
+							<li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link">{{request.user}}/Logout</a></li>
+                			{% else %}
+                			<li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register/Login</a></li>
+                			{% endif %}
+							<li><a href="{% url 'enquiry_page' %}" class="active">Inquiries</a></li>
+							<li><a href="{% url 'chatbot' %}">Chat Support</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+				{% block content %}
+					<div id="main">
+						<div class="inner">
+							<h1>Enquiries</h1>
+
+							<div class="image main">
+								<img src="{% static 'images/banner-image-4-1920x500.jpg' %}" class="img-fluid" alt="" />
+							</div>
+							{% if data %}
+							<table class="table table-dark">
+  								<thead>
+    								<tr>
+									  <th scope="col">Car Name</th>
+									  <th scope="col">Car Price</th>
+										<th scope="col">Your Offer</th>
+										<th scope="col">Status</th>
+									  <th scope="col">Action</th>
+										<th scope="col">Payment</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for i in data %}
+									<tr>
+									  <td>{{i.Car_Name}}</td>
+									  <td>{{i.Price}}</td>
+										<td>{{i.Offer}}</td>
+										<td>
+											{% if i.Status == 0 %}
+												<a href="#"><button class="btn btn-outline-Danger">Pending</button></a>
+											{% elif i.Status == 1 %}
+												<a href="#"><button class="btn btn-outline-Danger">Approved</button></a>
+											{% elif i.Status == 2 %}
+												<a href="#"><button class="btn btn-outline-Danger">Rejected</button></a>
+											{% endif %}
+										</td>
+										<td>
+											<a href="{% url 'delete_inq' d_id=i.id %}"><button class="btn btn-outline-Danger">delete</button></a>
+											<a href="{% url 'car_details' d_id=i.Car_Id %}"><button class="btn btn-outline-Danger">view car</button></a>
+										</td>
+										<td>
+											{% if i.Status == 1  %}
+												<a href="{% url 'make_payment' e_id=i.id %}"><button class="btn btn-outline-Danger">Pay Advance</button></a>
+											{% else %}
+												<a href="#"><button class="btn btn-outline-Danger" disabled="disabled">Pay Advance</button></a>
+											{% endif %}
+										</td>
+
+
+									</tr>
+								  	{% endfor %}
+
+								</tbody>
+								</table>
+							{% else %}
+								<div class="alert alert-primary" role="alert" style="background-color:black; color:white;">
+          							<h4>You have no inquiries!!</h4>
+        						</div>
+
+        					{% endif %}
+						</div>
+					</div>
+				{% endblock %}
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<ul class="icons">
+									<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+
+								&nbsp;
+							</section>
+
+							<ul class="copyright">
+								<li>Copyright © 2020 Company Name </li>
+								<li>Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+	</body>
+</html>

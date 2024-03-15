@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Edit Car Details</h4>
+                    <p class="card-description"></p>
+                    <form class="forms-sample" method="post" action="{% url 'update_car' c_id=car.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" name="name"  class="form-control" id="exampleInputName1" placeholder="Car Name" value="{{car.Name}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Model</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Model" name="model" value="{{car.Model}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="description">{{car.Description}}</textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Current Image</label>
+                        <img src="{{car.Image_1.url}}" alt="" width="100px" height="100px">
+                          <img src="{{car.Image_2.url}}" alt="" width="100px" height="100px">
+                          <img src="{{car.Image_3.url}}" alt="" width="100px" height="100px">
+                          <img src="{{car.Image_4.url}}" alt="" width="100px" height="100px">
+                      </div>
+                       <div class="form-group">
+                        <label>File upload</label>
+                        <div class="input-group col-xs-12">
+                          <label style="padding-top:7px">Image 1  :</label>
+                          <input type="file" id="myFile" name="image-1">
+                        </div>
+                          <div class="input-group col-xs-12" style="margin-top:10px">
+                          <label style="padding-top:7px">Image 2  :</label>
+                          <input type="file" id="myFile" name="image-2">
+                        </div>
+                          <div class="input-group col-xs-12" style="margin-top:10px">
+                          <label style="padding-top:7px">Image 3  :</label>
+                          <input type="file" id="myFile" name="image-3">
+                        </div>
+                          <div class="input-group col-xs-12" style="margin-top:10px">
+                          <label style="padding-top:7px">Image 4  :</label>
+                          <input type="file" id="myFile" name="image-4">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Price</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Price" name="price" value="{{car.Price}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Mileage</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Mileage" name="mileage" value="{{car.Mileage}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Engine</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Engine" name="engine" value="{{car.Engine}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Transmission</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Transmission" name="transmission" value="{{car.Transmission}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Fuel Type</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Fuel" name="fuel" value="{{car.Fuel_Type}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Seating Capacity</label>
+                        <input type="number" class="form-control" id="exampleInputCity1" placeholder="Seat" min="2" name="seat" value="{{car.Seats}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Color</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Color" name="color" value="{{car.Color}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Doors</label>
+                        <input type="number" class="form-control" id="exampleInputCity1" placeholder="Doors" min="2" name="door" value="{{car.Doors}}">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Year</label>
+                        <input type="number" class="form-control" id="exampleInputCity1" placeholder="Year" min="2018" name="year" value="{{car.Year}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Body Style</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Body Syle"  name="bodystyle" value="{{car.Body_Style}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Power</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Power" name="power" value="{{car.Power}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Type</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Type" name="type" value="{{car.Type}}">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Features</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="features">{{car.Features}}</textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add New Car Details</h4>
+                    <p class="card-description"></p>
+                    <form class="forms-sample" method="post" action="{% url 'save_car' %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input type="text" name="name"  class="form-control" id="exampleInputName1" placeholder="Car Name">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputName1">Model</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Model" name="model">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"></textarea>
+                      </div>
+                        <div class="form-group">
+                        <label>File upload</label>
+                        <div class="input-group col-xs-12">
+                          <label style="padding-top:7px">Image 1  :</label>
+                          <input type="file" id="myFile" name="image-1">
+                        </div>
+                          <div class="input-group col-xs-12" style="margin-top:10px">
+                          <label style="padding-top:7px">Image 2  :</label>
+                          <input type="file" id="myFile" name="image-2">
+                        </div>
+                          <div class="input-group col-xs-12" style="margin-top:10px">
+                          <label style="padding-top:7px">Image 3  :</label>
+                          <input type="file" id="myFile" name="image-3">
+                        </div>
+                          <div class="input-group col-xs-12" style="margin-top:10px">
+                          <label style="padding-top:7px">Image 4  :</label>
+                          <input type="file" id="myFile" name="image-4">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Price</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Price" name="price">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Mileage</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Mileage" name="mileage">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Engine</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Engine" name="engine">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Transmission</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Transmission" name="transmission">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Fuel Type</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Fuel" name="fuel">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Seating Capacity</label>
+                        <input type="number" class="form-control" id="exampleInputCity1" placeholder="Seat" min="2" name="seat">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Color</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Color" name="color">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Doors</label>
+                        <input type="number" class="form-control" id="exampleInputCity1" placeholder="Doors" min="2" name="door">
+                      </div>
+                        <div class="form-group">
+                        <label for="exampleInputCity1">Year</label>
+                        <input type="number" class="form-control" id="exampleInputCity1" placeholder="Year" min="2018" name="year">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Features</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="features"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Type</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="condition" name="type">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Body Style</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Body Style" name="bodystyle">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputCity1">Power</label>
+                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Power" name="power">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+<style>
+    .upload_btn{
+        background-color: indigo;
+  color: white;
+  padding-top:12px;
+  padding-left:10px;
+  padding-right:10px;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 0rem;
+  height: 38px;
+  }
+</style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}','','warning')
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}','','error')
+            </script>
+        {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}','','info')
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

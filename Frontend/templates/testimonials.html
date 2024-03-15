@@ -1,0 +1,163 @@
+
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+	<head>
+		<title>Testimonials</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+
+						<!-- Logo -->
+							<a href="{% url 'home_page' %}" class="logo">
+								<span class="fa fa-car"></span> <span class="title">Car Dealer</span>
+							</a>
+
+						<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</header>
+
+			<!-- Menu -->
+				<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="{% url 'home_page' %}">Home</a></li>
+
+							<li><a href="{% url 'all_cars' %}">Cars</a></li>
+
+							<li>
+								<a href="#" class="dropdown-toggle">About</a>
+
+								<ul>
+									<li><a href="{% url 'about_page' %}" class="active">About Us</a></li>
+									<li><a href="{% url 'teams' %}">Team</a></li>
+									<li><a href="{% url 'blog' %}">Blog</a></li>
+									<li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+									<li><a href="{% url 'faq' %}">FAQ</a></li>
+								</ul>
+							</li>
+							<li><a href="{% url 'contact' %}">Contact Us</a></li>
+							{% if request.user.is_authenticated %}
+							<li class="nav-item"><a href="{% url 'user_logout' %}" class="nav-link">{{request.user}}/Logout</a></li>
+                			{% else %}
+                			<li class="nav-item"><a href="{% url 'user_login' %}" class="nav-link">Register/Login</a></li>
+                			{% endif %}
+							<li><a href="{% url 'enquiry_page' %}">Inquiries</a></li>
+							<li><a href="{% url 'chatbot' %}">Chat Support</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Testimonials</h1>
+
+							<div class="image main">
+								<img src="{% static 'images/banner-image-3-1920x500.jpg' %}" class="img-fluid" alt="" />
+							</div>
+
+								{% for i in review %}
+								<div class="row">
+								<div class="col-sm-12 text-center">
+									{% if i.Stars == 1 %}
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% elif i.Stars == 2 %}
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% elif i.Stars == 3 %}
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									{% elif i.Stars == 4 %}
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+									{% elif i.Stars == 5 %}
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+									{% else %}
+										<span class="fa fa-star "></span>
+										<span class="fa fa-star "></span>
+										<span class="fa fa-star "></span>
+										<span class="fa fa-star "></span>
+										<span class="fa fa-star "></span>
+									{% endif %}
+									<p class="m-n"><em>{{i.Message}}</em></p>
+
+									<p><strong>{{i.Username}}</strong></p>
+								</div>
+
+							</div>
+								{% endfor %}
+
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<ul class="icons">
+									<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+
+								&nbsp;
+							</section>
+
+							<ul class="copyright">
+								<li>Copyright © 2020 Car Dealers</li>
+
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+		<style>
+			.checked {
+  				color: orange;
+			}
+
+		</style>
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+	</body>
+</html>
